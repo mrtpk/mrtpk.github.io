@@ -1,0 +1,35 @@
+.dp {
+    display: block;
+    max-width: 100px;
+    height: auto;
+    float: left;
+    margin: 0px auto;
+    margin-bottom: 0px;
+    margin-right: 20px;
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
+    border-radius: 500px;
+}
+
+
+/* Global */
+
+a,
+a:hover,
+a:active,
+a:visited {
+    font-style: normal;
+    text-decoration: none;
+    color: #1081B6;
+}
+a:hover {
+    text-decoration: none;
+    color: #3F6A7E;
+}
+
+.name {
+    font-weight: bold;
+    font-style: normal;
+    margin-right: 1px;
+    color: #333333;
+}
