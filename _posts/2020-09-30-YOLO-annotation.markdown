@@ -5,9 +5,9 @@ date:   2019-09-30 21:37:00 +0530
 categories: deep-learning
 ---
 
-Lately, I have been [reading about YOLO][analyticsvdya-yolo] and today I read about how to annotate to create a dataset for training YOLO.
+Lately, I have been [reading about YOLO][analyticsvdya-yolo] and this note is about how the annotations are stored for training YOLO.
 
-Each image in the dataset should have a corresponding `txt` file with the name. The bounding box in the image is represented by each line in the text file. The syntax of the line is as follows:
+Each image in the dataset should have a corresponding `txt` file. The bounding box in the image is represented by each line in the text file. The syntax of the line is as follows:
 
 `class_id x y w h`
 
