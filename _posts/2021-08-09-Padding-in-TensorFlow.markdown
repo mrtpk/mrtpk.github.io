@@ -8,9 +8,10 @@ mathjax: true
 
 Padding means expanding the input array with value (called pad value). The pad values (commonly zero) can be added along the height or width of the input array.
 
-![pad along width and height](https://github.com/mrtpk/kaizen/blob/master/snippets/TensorFlow_Padding/pad_along_width_height.png)
+![pad along width and height](/assets/kaizen/snippets/TensorFlow_Padding/pad_along_width_height.png)
 
 The output shape of a convolution operation is defined as follows,
+
 $$
 output = \lfloor {\frac {(input - kernel + 2 * padding)} {stride}} \rfloor + 1 
 $$
@@ -41,7 +42,7 @@ $$
 
 To satisfy the above constraints, the input array has to be modified. From deriving the number of padding needed from the first equation, we get,
 
-![pad along width and height](../assets/kaizen/snippets/TensorFlow_Padding/padding_derivation.png)
+![pad along width and height](/assets/kaizen/snippets/TensorFlow_Padding/padding_derivation.png)
 
 $$
 number\_of\_padding\_along\_height = (output\_height - 1) * stride\_along\_height - input\_height + kernel\_height
