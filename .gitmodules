@@ -1,3 +1,3 @@
 [submodule "assets/kaizen"]
 	path = assets/kaizen
-	url = git@github.com:mrtpk/kaizen.git
+	url = https://github.com/mrtpk/kaizen.git
