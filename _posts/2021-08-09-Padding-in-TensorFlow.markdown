@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[draft] TensorFlow's padding in convolution layer"
+title:  "TensorFlow's padding in convolution layer"
 date:   2021-08-09 11:09:00 +0530
 categories: deep-learning TensorFlow Keras
 mathjax: true
