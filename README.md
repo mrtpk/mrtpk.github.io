@@ -23,11 +23,12 @@ More details on minima theme is at it's [repo](https://github.com/jekyll/minima)
 + Install bundle - `bundle install`
 
 #### Build website and host it on your local machine:
++ To build the site to `_site` folder - `bundle exec jekyll build`
 + Run website locally at `http://127.0.0.1:4000/` - `bundle exec jekyll serve` 
 
 ## Some tips:
 + The `minima` theme will be installed locally on your system at `bundle show minima`. We can copy layouts and include files and edit them to suit our needs.
 + To add `favicon` to jenkyll minima - Add `<link rel="shortcut icon" type="image/png" href="{{ 'path to the favicon' }}">` to `<head>` tag.
-
++ Since the GitHub Pages [doesn't support](https://pages.github.com/versions/) the Jekyll plugin [`jekyll-paginate-v2`](https://github.com/sverrirs/jekyll-paginate-v2) I'm using, I'm uploading static pages to the `master` branch and then deploying the site.
 
 If you have any feedback or questions, feel free to raise an issue.
