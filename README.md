@@ -29,6 +29,6 @@ More details on minima theme is at it's [repo](https://github.com/jekyll/minima)
 ## Some tips:
 + The `minima` theme will be installed locally on your system at `bundle show minima`. We can copy layouts and include files and edit them to suit our needs.
 + To add `favicon` to jenkyll minima - Add `<link rel="shortcut icon" type="image/png" href="{{ 'path to the favicon' }}">` to `<head>` tag.
-+ Since the GitHub Pages [doesn't support](https://pages.github.com/versions/) the Jekyll plugin [`jekyll-paginate-v2`](https://github.com/sverrirs/jekyll-paginate-v2) I'm using, I'm uploading static pages to the `master` branch and then deploying the site. This is achieved using []`publish.sh`](https://github.com/mrtpk/mrtpk.github.io/blob/builder/publish.sh). The script generates static web pages from builder branch and then updates it in the master branch.
++ Since the GitHub Pages [doesn't support](https://pages.github.com/versions/) the Jekyll plugin [`jekyll-paginate-v2`](https://github.com/sverrirs/jekyll-paginate-v2) I'm using, I'm uploading static pages to the `master` branch and then deploying the site. This is achieved using [`publish.sh`](https://github.com/mrtpk/mrtpk.github.io/blob/builder/publish.sh). The script generates static web pages from builder branch and then updates it in the master branch.
 
 If you have any feedback or questions, feel free to raise an issue.
