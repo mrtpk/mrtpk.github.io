@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>YOLO Annotation | Thomas Paul</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="YOLO Annotation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Lately, I have been reading about YOLO and this note is about how the annotations are stored for training YOLO." />
+<meta property="og:description" content="Lately, I have been reading about YOLO and this note is about how the annotations are stored for training YOLO." />
+<link rel="canonical" href="http://localhost:4000/2019/09/201909YOLO-annotation.html" />
+<meta property="og:url" content="http://localhost:4000/2019/09/201909YOLO-annotation.html" />
+<meta property="og:site_name" content="Thomas Paul" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-09-30T21:37:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="YOLO Annotation" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-09-30T21:37:00+05:30","datePublished":"2019-09-30T21:37:00+05:30","description":"Lately, I have been reading about YOLO and this note is about how the annotations are stored for training YOLO.","headline":"YOLO Annotation","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2019/09/201909YOLO-annotation.html"},"url":"http://localhost:4000/2019/09/201909YOLO-annotation.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/tpk_style.css">
+    <link rel="shortcut icon" type="image/png" href="/assets/imgs/android-chrome-192x192.png"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Thomas Paul" /></head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Thomas Paul</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          <a class="page-link" href="/posts/">My musings</a></div>
+      </nav></div>
+  
+</header>
+
+<!-- <header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" href="/">Thomas Paul</a><nav class="site-nav">
+      <span class="menu-icon">
+        <svg viewBox="0 0 18 15" width="18px" height="15px">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </span>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about/">Pressence</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/posts/index.html">My musings</a>
+          
+        
+          
+        
+      </div>
+    </nav></div>
+</header> -->
+
+<!-- 
+<header class="site-header">
+
+        <div class="wrapper"><a class="site-title" rel="author" href="/">Thomas Paul</a><nav class="site-nav">
+              <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+              <label for="nav-trigger">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 18 15" width="18px" height="15px">
+                    <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+                  </svg>
+                </span>
+              </label>
+      
+              <div class="trigger"></div>
+            </nav></div>
+
+        
+</header> --><main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">YOLO Annotation</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-09-30T21:37:00+05:30" itemprop="datePublished">Sep 30, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Lately, I have been <a href="https://www.analyticsvidhya.com/blog/2018/12/practical-guide-object-detection-yolo-framewor-python/">reading about YOLO</a> and this note is about how the annotations are stored for training YOLO.</p>
+
+<p>Each image in the dataset should have a corresponding <code class="language-plaintext highlighter-rouge">txt</code> file. The bounding box in the image is represented by each line in the text file. The syntax of the line is as follows:</p>
+
+<p><code class="language-plaintext highlighter-rouge">class_id x y w h</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code> are coordinates of the mid point of the bounding box. <code class="language-plaintext highlighter-rouge">w</code> and <code class="language-plaintext highlighter-rouge">h</code> are the width and height of the bounding box. The values for <code class="language-plaintext highlighter-rouge">x</code>, <code class="language-plaintext highlighter-rouge">y</code>, <code class="language-plaintext highlighter-rouge">w</code> and <code class="language-plaintext highlighter-rouge">h</code> are expressed relative to the image(ratio).</p>
+
+<p>Let’s say, <code class="language-plaintext highlighter-rouge">im_w</code> and <code class="language-plaintext highlighter-rouge">im_h</code> are the width and height of an image, and <code class="language-plaintext highlighter-rouge">(x_min, y_min)</code> and <code class="language-plaintext highlighter-rouge">(x_max, y_max)</code> are two diagonally opposite coordinates of a bounding box. To convert them into YOLO metrics, we find the midpoint of the bounding box- <code class="language-plaintext highlighter-rouge">((x_min + x_max) / 2 , (y_min + y_max) / 2)</code>. The width and height of bounding box is given by <code class="language-plaintext highlighter-rouge">x_max - x_min</code> and <code class="language-plaintext highlighter-rouge">y_max - y_min</code>. Then to express the values relative to image, we divide these values by <code class="language-plaintext highlighter-rouge">im_w</code> and <code class="language-plaintext highlighter-rouge">im_h</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">x</code> = <code class="language-plaintext highlighter-rouge">(x_min + x_max) / (2 * im_w)</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">y</code> = <code class="language-plaintext highlighter-rouge">(y_min + y_max) / (2 * im_h)</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">w</code> = <code class="language-plaintext highlighter-rouge">(x_max - x_min) / im_w</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">h</code> = <code class="language-plaintext highlighter-rouge">(y_max - y_min) / im_h</code></p>
+
+<p>Below is the Python code.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">im_w</span><span class="p">,</span> <span class="n">im_h</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">):</span>
+    <span class="n">dw</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="n">im_w</span>
+    <span class="n">dh</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="n">im_h</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_min</span> <span class="o">+</span> <span class="n">x_max</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_min</span> <span class="o">+</span> <span class="n">y_max</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">y_max</span> <span class="o">-</span> <span class="n">y_min</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">dw</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="o">*</span><span class="n">dw</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">*</span><span class="n">dh</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="o">*</span><span class="n">dh</span>
+    <span class="nf">return </span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">deconvert</span><span class="p">(</span><span class="n">im_w</span><span class="p">,</span> <span class="n">im_h</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="n">ox</span> <span class="o">=</span> <span class="nf">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">oy</span> <span class="o">=</span> <span class="nf">float</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">ow</span> <span class="o">=</span> <span class="nf">float</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="n">oh</span> <span class="o">=</span> <span class="nf">float</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">ox</span><span class="o">*</span><span class="n">im_w</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">oy</span><span class="o">*</span><span class="n">im_h</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">ow</span><span class="o">*</span><span class="n">im_w</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">oh</span><span class="o">*</span><span class="n">im_h</span>
+    <span class="n">xmax</span> <span class="o">=</span> <span class="p">(((</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">w</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">xmin</span> <span class="o">=</span> <span class="n">xmax</span><span class="o">-</span><span class="n">w</span>
+    <span class="n">ymax</span> <span class="o">=</span> <span class="p">(((</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ymin</span> <span class="o">=</span> <span class="n">ymax</span><span class="o">-</span><span class="n">h</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nf">int</span><span class="p">(</span><span class="n">xmin</span><span class="p">),</span><span class="nf">int</span><span class="p">(</span><span class="n">ymin</span><span class="p">),</span><span class="nf">int</span><span class="p">(</span><span class="n">xmax</span><span class="p">),</span><span class="nf">int</span><span class="p">(</span><span class="n">ymax</span><span class="p">)]</span></code></pre></figure>
+
+<p><a href="https://github.com/ManivannanMurugavel">Manivannan</a> has shared an annotation <a href="https://github.com/ManivannanMurugavel/Yolo-Annotation-Tool-New-/">tool</a> and wrote about <a href="https://medium.com/@manivannan_data/yolo-annotation-tool-new-18c7847a2186">how to use it</a>. Please note that his tool is in Python 2 and with some edits will work on Python 3.</p>
+
+
+  </div><a class="u-url" href="/2019/09/201909YOLO-annotation.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+  
+    <div class="wrapper">
+  
+        <div class="footer-col-wrapper">
+            <div class="footer-col">
+                <img src="/assets/imgs/dp.jpg" class="dp">
+                <p> <b>Thank you for your interest.</b><br/> I am a deep learning enthusiast 
+                    who is eager for expanding horizons, and, to meet new people. If you have a feedback, need any clarification, or just want to talk about it, please drop a line via <a href="https://twitter.com/tpk_in">Twitter</a>, <a href="https://www.linkedin.com/in/mrtpk">LinkedIn</a>, or <a href="mailto:nivintpaul[at]gmail[dot]com">mail</a>. I would really appreciate it&#128516;<br/>~ <span class="name">thomas</span> aka <span class="name">mrtpk</span>.
+
+                </p>
+            </div>
+        </div>
+    </div>
+  
+</footer>
+</body>
+
+</html>

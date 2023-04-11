@@ -2,6 +2,7 @@
 # Updates the repo with static web pages created from builder
 rm -rf build
 git clone https://github.com/mrtpk/mrtpk.github.io.git build
+git submodule update --init --recursive
 bundle exec jekyll build
 cd build
 rm -rf *
