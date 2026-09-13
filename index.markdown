@@ -9,7 +9,7 @@ Hello there,<br />
 
 I'm Thomas, an AI Software Engineer with more than 10 years of experience building AI and software systems.
 
-These days, I work at the intersection of **LLM systems, AI accelerators, and production AI**: benchmarking distributed inference, studying model architectures and parallelism strategies, working with accelerator software stacks, and building tools to reason about latency, throughput, and system performance.
+These days, I work at the intersection of LLM systems, AI accelerators, and production AI: benchmarking distributed inference, studying model architectures and parallelism strategies, working with accelerator software stacks, and building tools to reason about latency, throughput, and system performance.
 
 My path started in computer vision and has taken me through autonomous vehicles, industrial inspection, audio AI, model quantization, AI compilers, NPUs, generative AI, and large language models. The thread has always been the same: I like understanding what happens between a model and the system that runs it.
 
