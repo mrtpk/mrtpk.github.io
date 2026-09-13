@@ -7,24 +7,30 @@ layout: index_default
 
 Hello there,<br />
 
-<!-- I’m Thomas.<br /> -->
-I'm a techie, husband, deep learning enthusiast, traveler, and lifelong learner.
+I'm Thomas, an AI Software Engineer with more than 10 years of experience building AI and software systems.
 
-I meet every day with determination and confidence, driven by passion and striving for perfection. Every challenge and obstacle presents an opportunity to grow. I believe things will be easy with a concise understanding of fundamentals. I get excited to collaborate and share to learn new things and improve myself.
+These days, I work at the intersection of **LLM systems, AI accelerators, and production AI**: benchmarking distributed inference, studying model architectures and parallelism strategies, working with accelerator software stacks, and building tools to reason about latency, throughput, and system performance.
 
-I am working with Roviero to bring deep learning models to the edge. Been at Sony, Ignitarium, Alstom, Infosys, and TrustCircle. Alumnus of MG University and Jawahar Navodaya Vidyalaya. Enthusiastic in creating affordable and adaptable computer vision solutions by utilizing conventional and machine learning techniques to help people.
+My path started in computer vision and has taken me through autonomous vehicles, industrial inspection, audio AI, model quantization, AI compilers, NPUs, generative AI, and large language models. The thread has always been the same: I like understanding what happens between a model and the system that runs it.
 
-When I am not reading about deep learning or not working on a project, I enjoy reading fiction. The current book I am reading is Orphan X by Gregg Hurwitz. I am a Formula One fan. I like hearing Coldplay and Linkin Park.
+Over the years, I've worked at Evollabs, Synaptics, Roviero, Ignitarium, Infosys, and TrustCircle, while also contributing to projects for organizations including Biotactic, SOF London, Shiba Inu, Sony, Alstom, and others.
 
-Always eager for the next book, new music, expanding my horizons, and finding places to travel to.
+What I enjoy most is taking something that works as an experiment and turning it into a dependable production system. Increasingly, I'm also interested in designing systems that other engineers can understand, validate, maintain, and build upon.
 
-Please feel free to reach me on [Twitter][twitter] or on [LinkedIn][LinkedIn].<br />Looking forward to hearing from you.
+Alongside my full-time work, I collaborate with teams around the world on challenging problems, from scientific computer-vision systems to generative AI applications and automation.
+
+A lot of my learning happens simply out of curiosity: experimenting, benchmarking, reading papers, writing small tools, or disappearing into a technical rabbit hole for longer than originally planned.
+
+Outside work, I'm a husband, traveler, occasional gamer, and lifelong learner. Right now, I'm fascinated by *Chip War* and the history, economics, and geopolitics behind the semiconductor industry. I also love good music and exploring new places.
+
+This site is where I share what I'm learning, projects I'm working on, and ideas I find interesting.
+
+You can find more of my work on [GitHub][github], connect with me on [LinkedIn][LinkedIn] or [Twitter][twitter], or check out my freelance work on [Upwork][upwork].
 
 Best,<br />
 Thomas <span style="color:red;">&#9829;</span>
 
-PS: I have more than seven years of experience in the software industry. If you are interested in knowing my work, please do checkout my [LinkedIn profile][LinkedIn].  
-
-[twitter]: https://twitter.com/{{ site.twitter_username }}
+[github]: https://github.com/{{ site.github_username }}
 [LinkedIn]: https://www.linkedin.com/in/{{ site.linkedin_username }}/
-[mail]: mailto:{{ site.email }}
+[twitter]: https://twitter.com/{{ site.twitter_username }}
+[upwork]: https://www.upwork.com/freelancers/~01fa632fc8eeeef1d1
