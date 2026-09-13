@@ -23,6 +23,21 @@ BRANCH="master"
 echo ">> Repo:   $REPO"
 echo ">> Remote: $REMOTE"
 
+# 0. Load rbenv if present, so `bundle`/`jekyll` are available even in a
+#    non-interactive shell (e.g. `bash publish.sh`). Harmless if not installed
+#    (e.g. CI using system Ruby).
+if [ -d "$HOME/.rbenv" ]; then
+  export RBENV_ROOT="$HOME/.rbenv"
+  export PATH="$RBENV_ROOT/bin:$PATH"
+  eval "$(rbenv init - bash)"
+fi
+
+# Fail early with a clear message if the Ruby toolchain still isn't available.
+command -v bundle >/dev/null 2>&1 || {
+  echo "ERROR: 'bundle' not found on PATH. Install Ruby/Bundler (or fix rbenv) and retry."
+  exit 1
+}
+
 # 1. Ensure the posts submodule (_posts -> kaizen) is present and checked out.
 echo ">> Updating submodules (_posts)..."
 git submodule update --init --recursive
